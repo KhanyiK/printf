@@ -1,4 +1,7 @@
 #include "main.h"
+
+void print_buffer(char buffer[], int *buff_ind);
+
 /**
  * _printf - the printf function
  * @format: the format
@@ -7,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	int x, y = 0, chars = 0;
-	int flags, width, precision, size, buff = 0;
+	int flags, width, precision, size, buff_ind = 0;
 	va_list list;
 	char buffer[BUFF_SIZE];
 
@@ -18,15 +21,15 @@ int _printf(const char *format, ...)
 	{
 		if (format[x] != '%')
 		{
-			buffer[buff++] = format[x];
-			if (buff == BUFF_SIZE)
-				print_buffer(buffer, &buff);
+			buffer[buff_ind++] = format[x];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
 			/*write(1, &format[x], 1)*/
 			chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff);
+			print_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &x);
 			width = get width(format, &x, list);
 			precision = get_precision(format, &x, list);
@@ -39,7 +42,18 @@ int _printf(const char *format, ...)
 			chars += y;
 		}
 	}
-	print_buffer(buffer, &buff);
+	print_buffer(buffer, &buff_ind);
 	va_end(list);
 	return (chars);
+}
+/**
+ * print_buffer - prints buffer if it is there
+ * @buffer: char array
+ * @buff_ind: length of char
+ */
+void print_buffer(char buffer[], int *buff_ind);
+{
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+	*buff_ind = 0;
 }
