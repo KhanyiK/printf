@@ -19,6 +19,17 @@
 #define S_SHORT 1
 
 /**
+ * struct fmt - struct op
+ * @fmt: format
+ * @fn: function
+ */
+struct fmt
+{
+	char fmt;
+	int (*fn)(va_list, char[], int, int, int, int);
+};
+
+/**
  * typedef struct fmt fmt_t - struct op
  * @fmt: formatt
  * @fm_t: function
@@ -28,9 +39,10 @@ int _printf(const char *format, ...);
 int handle_print(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /*** FUNCTIONS ***/
-/*functions to print chars and strings*/
+/* print chars and strings */
 int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_string(va_list types, char buffer[], int flags, int width, int precision, int size);
+<<<<<<< HEAD
 int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size)
 int _printf(const char *format, ...);
 int _strlen(const char *str);
@@ -45,4 +57,27 @@ int print_HEX(va_list val);
 int print_hex(va_list val);
 int print_exc_string(va_list val);
 int print_HEX_extra(unsigned int num);
+=======
+int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/* print numbers */
+int print_int(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_binary(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_unsigned(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_octal(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexadecimal(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexa_upper(va_list types, char buffer[], int flags, int width, int precision, int size);
+int print_hexa(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/* print memory address */
+int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/* print non printable characters */
+int print_non_printable(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/* handle other specifiers */
+int get_flags(const char *format, int *i);
+int get_precision(const char *format, int *i);
+
+>>>>>>> 4ddd546e9e1bc2125bd460368aff097d4408d4ff
 #endif
