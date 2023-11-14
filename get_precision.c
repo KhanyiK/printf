@@ -5,10 +5,10 @@
  * @i: list of arguments
  * Return: precision
  */
-int get_precion(const char *format, int *i, va_list list)
+int get_precision(const char *format, int *i, va_list *list)
 {
 	int curr_y = *i = 1;
-	int precision = - 1;
+	int precision = -1;
 
 	if (format[curr_y] != '.')
 		return (precision);
@@ -24,12 +24,12 @@ int get_precion(const char *format, int *i, va_list list)
 		else if (format[curr_y] == '*')
 		{
 			curr_y++;
-			precision = va_arg(list , int);
+			precision = va_arg(list, int);
 			break;
 		}
 		else
 			break;
 	}
 	*i = curr_y - 1;
-	return(precision);
+	return (precision);
 }
