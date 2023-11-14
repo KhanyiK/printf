@@ -32,4 +32,17 @@ int handle_print(va_list types, char buffer[], int flags, int width, int precisi
 int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_string(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size)
+int _printf(const char *format, ...);
+int _strlen(const char *str);
+int strlen(char *str);
+int print_dec(va_list args);
+int print_bin(va_list args);
+int print_unsigned(va_list args);
+int print_37(void);
+int print_int(va_list args);
+int print_oct(va_list args);
+int print_HEX(va_list val);
+int print_hex(va_list val);
+int print_exc_string(va_list val);
+int print_HEX_extra(unsigned int num);
 #endif
