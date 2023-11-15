@@ -35,7 +35,7 @@ struct fmt
  * @fmt: formatt
  * @fm_t: function
  */
-tpedef struct fmt fmt_t;
+typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
 int handle_print(va_list types, char buffer[], int flags, int width, int precision, int size);
 
@@ -43,22 +43,14 @@ int handle_print(va_list types, char buffer[], int flags, int width, int precisi
 /* print chars and strings */
 int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_string(va_list types, char buffer[], int flags, int width, int precision, int size);
-<<<<<<< HEAD
-int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size)
-int _printf(const char *format, ...);
-int _strlen(const char *str);
-int strlen(char *str);
 int print_dec(va_list args);
 int print_bin(va_list args);
-int print_unsigned(va_list args);
 int print_37(void);
-int print_int(va_list args);
 int print_oct(va_list args);
 int print_HEX(va_list val);
 int print_hex(va_list val);
 int print_exc_string(va_list val);
 int print_HEX_extra(unsigned int num);
-=======
 int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /* print numbers */
@@ -80,5 +72,10 @@ int print_non_printable(va_list types, char buffer[], int flags, int width, int 
 int get_flags(const char *format, int *i);
 int get_precision(const char *format, int *i);
 
->>>>>>> 4ddd546e9e1bc2125bd460368aff097d4408d4ff
+/* print string in reverse */
+int print_reverse(va_list types, char buffer[], int flags, int width, int precision, int size);
+
+/* print a string in rot 13 */
+int print_rot13stringi(va_list types, char buffer[], int flags, int width, int precision, int size);
+
 #endif
