@@ -43,14 +43,6 @@ int handle_print(va_list types, char buffer[], int flags, int width, int precisi
 /* print chars and strings */
 int print_char(va_list types, char buffer[], int flags, int width, int precision, int size);
 int print_string(va_list types, char buffer[], int flags, int width, int precision, int size);
-int print_dec(va_list args);
-int print_bin(va_list args);
-int print_37(void);
-int print_oct(va_list args);
-int print_HEX(va_list val);
-int print_hex(va_list val);
-int print_exc_string(va_list val);
-int print_HEX_extra(unsigned int num);
 int print_percent(va_list types, char buffer[], int flags, int width, int precision, int size);
 
 /* print numbers */
